@@ -5,11 +5,15 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import logica.Usuarios;
 
 /**
  *
@@ -25,7 +29,20 @@ public class SvUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //se instancia el modelo usuarios como lista
+        List<Usuarios> listaUsuarios = new ArrayList<>();
+        //se agregan datos a esa lista
+        listaUsuarios.add(new Usuarios("542010870","Christian","Juarez","8110482774"));
+        listaUsuarios.add(new Usuarios("12344444","Christian","Juarez","8110482774"));
+        listaUsuarios.add(new Usuarios("542010870","Christian","Juarez","8110482774"));
+        
+        //se toma la sesion de el usuario
+        HttpSession MiSesion = request.getSession();
+        //se le manda la lista a la sesion activa
+        MiSesion.setAttribute("listaUsuarios", listaUsuarios);
+        
+        //redireccion a otra vista
+        response.sendRedirect("mostrarUsuarios.jsp");
     }
 
     @Override

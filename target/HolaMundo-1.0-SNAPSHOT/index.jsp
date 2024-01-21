@@ -44,5 +44,11 @@
             </p>
             <button type="sumbit">Enviar</button>
         </form>
+        <h1>Ver lista de usuarios</h1>
+        <p>
+        <form action="SvUsuarios" method="GET">
+            <button type="sumbit">Mostrar Usuarios</button>
+        </form>
+        </p>
     </body>
 </html>
